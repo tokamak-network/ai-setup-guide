@@ -15,7 +15,7 @@ LiteLLM is a proxy service that allows you to use multiple AI models (Claude, GP
 Open your web browser and go to:
 
 ```
-https://api.ai.tokamak.network/
+https://api.ai.tokamak.network/ui/
 ```
 
 > **Note**: If you don't have an account, contact Kevin to request account creation.

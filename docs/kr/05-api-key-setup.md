@@ -15,7 +15,7 @@ LiteLLM은 여러 AI 모델(Claude, GPT 등)을 하나의 통합 API로 사용�
 웹 브라우저에서 아래 주소로 접속하세요:
 
 ```
-https://api.ai.tokamak.network/
+https://api.ai.tokamak.network/ui/
 ```
 
 > **참고**: 계정이 없는 경우 Kevin에게 연락하여 계정 생성을 요청하세요.
