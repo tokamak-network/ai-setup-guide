@@ -8,3 +8,6 @@ Thumbs.db
 # IDE settings
 .vscode/
 .idea/
+
+# Reference images (not for distribution)
+*.jfif

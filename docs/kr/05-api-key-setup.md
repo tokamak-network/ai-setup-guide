@@ -20,7 +20,7 @@ LiteLLM은 여러 AI 모델(Claude, GPT 등)을 하나의 통합 API로 사용�
 │                                                             │
 │  2️⃣  API 키와 서버 주소 수신                                  │
 │      - API 키 예시: sk-xxxxxxxxxxxxxxxxxxxxxxxx              │
-│      - 서버 주소 : https://api.tokamak.network               │
+│      - 서버 주소 : https://api.ai.tokamak.network/               │
 │                                                             │
 │  3️⃣  API 키를 안전한 곳에 임시 보관                            │
 │      - 메모장에 복사해두기                                     │
@@ -100,7 +100,7 @@ PowerShell을 열고 아래 명령어 실행 (**API 키와 URL 부분을 수정*
 
 ```powershell
 [System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-여기에API키입력', 'User')
-[System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.tokamak.network', 'User')
+[System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.ai.tokamak.network/', 'User')
 ```
 
 **✅ 설정 확인** (새 PowerShell 창에서):
@@ -123,7 +123,7 @@ API 키 값이 출력되면 **성공!**
 
 ```bash
 echo 'export ANTHROPIC_API_KEY="sk-여기에API키입력"' >> ~/.zshrc
-echo 'export ANTHROPIC_BASE_URL="https://api.tokamak.network"' >> ~/.zshrc
+echo 'export ANTHROPIC_BASE_URL="https://api.ai.tokamak.network/"' >> ~/.zshrc
 ```
 
 3. 설정 적용:
@@ -177,7 +177,7 @@ source ~/.zshrc
 | 환경 변수 | 값 | 용도 |
 |----------|---|------|
 | `ANTHROPIC_API_KEY` | `sk-xxxxx` (발급받은 키) | API 인증 |
-| `ANTHROPIC_BASE_URL` | `https://api.tokamak.network` | 프록시 서버 주소 |
+| `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` | 프록시 서버 주소 |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` | 메인 작업용 모델 |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` | 백그라운드 작업용 모델 |
 | `CLAUDE_CODE_SUBAGENT_MODEL` | `claude-opus-4.5` | 서브 에이전트용 모델 |

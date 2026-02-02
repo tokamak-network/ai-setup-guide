@@ -8,6 +8,32 @@ Claude Code is the official AI coding assistant made by Anthropic.
 
 ---
 
+## ⚠️ Prerequisites: LiteLLM API Setup
+
+You **must** complete the API key setup before running Claude Code.
+
+> 📌 **Complete the environment variable setup in [Chapter 5: API Key Setup](05-api-key-setup.md) first!**
+
+### Quick Checklist
+
+Verify your setup is complete with these commands:
+
+**Mac:**
+```bash
+echo $ANTHROPIC_API_KEY && echo $ANTHROPIC_BASE_URL
+```
+
+**Windows:**
+```powershell
+echo $env:ANTHROPIC_API_KEY; echo $env:ANTHROPIC_BASE_URL
+```
+
+If values are displayed, setup is complete! → Proceed to **Installation** below
+
+If values are empty → Go to [Chapter 5: API Key Setup](05-api-key-setup.md)
+
+---
+
 ## Installation
 
 ### Windows
@@ -64,11 +90,17 @@ cd $env:USERPROFILE\Documents
 cd ~/Documents
 ```
 
-2. Run Claude Code:
+2. Run Claude Code (specify model):
 
 ```bash
-claude
+# Enter the model name you selected when getting your Virtual Key
+claude --model claude-opus-4.5
 ```
+
+> **Available Models:**
+> - `claude-opus-4.5` - Highest performance, best for complex tasks
+> - `claude-sonnet-4.5` - Balanced performance and speed
+> - `claude-haiku-4.5` - Fast response, best for simple tasks
 
 3. First run screen:
 
@@ -92,6 +124,7 @@ claude
 
 | Command | Description | Example |
 |---------|-------------|---------|
+| `claude --model model_name` | Start with specific model | `claude --model claude-opus-4.5` |
 | `claude` | Start Claude Code | Type `claude` in terminal |
 | `claude "question"` | Ask directly | `claude "python code to print hello world"` |
 | `/help` | View help | Type `/help` while running |

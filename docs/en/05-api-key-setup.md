@@ -20,7 +20,7 @@ LiteLLM is a proxy service that allows you to use multiple AI models (Claude, GP
 │                                                             │
 │  2️⃣  Receive API key and server address                     │
 │      - API key example: sk-xxxxxxxxxxxxxxxxxxxxxxxx         │
-│      - Server address: https://api.tokamak.network          │
+│      - Server address: https://api.ai.tokamak.network/          │
 │                                                             │
 │  3️⃣  Temporarily store API key in a safe place              │
 │      - Copy to notepad                                      │
@@ -95,7 +95,7 @@ Open PowerShell and run the following commands (**modify the API key and URL**):
 
 ```powershell
 [System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-enter-your-api-key-here', 'User')
-[System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.tokamak.network', 'User')
+[System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.ai.tokamak.network/', 'User')
 ```
 
 **✅ Verify Setup** (in a new PowerShell window):
@@ -118,7 +118,7 @@ If the API key value is displayed, **success!**
 
 ```bash
 echo 'export ANTHROPIC_API_KEY="sk-enter-your-api-key-here"' >> ~/.zshrc
-echo 'export ANTHROPIC_BASE_URL="https://api.tokamak.network"' >> ~/.zshrc
+echo 'export ANTHROPIC_BASE_URL="https://api.ai.tokamak.network/"' >> ~/.zshrc
 ```
 
 3. Apply settings:
@@ -171,7 +171,7 @@ source ~/.zshrc
 | Environment Variable | Value | Purpose |
 |---------------------|-------|---------|
 | `ANTHROPIC_API_KEY` | `sk-xxxxx` (your issued key) | API authentication |
-| `ANTHROPIC_BASE_URL` | `https://api.tokamak.network` | Proxy server address |
+| `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` | Proxy server address |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` | Model for main tasks |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` | Model for background tasks |
 | `CLAUDE_CODE_SUBAGENT_MODEL` | `claude-opus-4.5` | Model for sub-agents |

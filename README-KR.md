@@ -4,7 +4,7 @@
 
 🌐 [English Version](README.md)
 
-**문서 버전**: 1.7.0
+**문서 버전**: 1.8.0
 **최종 수정일**: 2025년 2월 2일
 **호환 버전**: Node.js 20.x LTS, Claude Code 1.x, OpenCode 0.x
 
@@ -91,6 +91,7 @@
 | 1.5.0 | 2025-02-02 | 링크 검증 및 수정 (Cursor), OpenCode Windows 미지원 안내 추가 |
 | 1.6.0 | 2025-02-02 | 한국어/영어 버전 분리, docs/kr 및 docs/en 폴더 구조화 |
 | 1.7.0 | 2025-02-02 | 연구자/HR팀을 위한 Skills & Agents 가이드 강화 (엑셀, 워드, PDF, 데이터 분석) |
+| 1.8.0 | 2025-02-02 | API URL 업데이트 (api.ai.tokamak.network), --model 플래그 사용법 추가, API 설정 흐름 재정리 |
 
 ---
 

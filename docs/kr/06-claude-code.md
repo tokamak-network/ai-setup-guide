@@ -8,6 +8,32 @@ Claude Code는 Anthropic에서 만든 공식 AI 코딩 어시스턴트입니다.
 
 ---
 
+## ⚠️ 사전 준비: LiteLLM API 설정
+
+Claude Code를 실행하기 전에 **반드시** API 키 설정을 완료해야 합니다.
+
+> 📌 **[Chapter 5: API 키 설정](05-api-key-setup.md)**에서 환경 변수 설정을 먼저 완료하세요!
+
+### 빠른 체크리스트
+
+아래 명령어로 설정이 완료되었는지 확인하세요:
+
+**Mac:**
+```bash
+echo $ANTHROPIC_API_KEY && echo $ANTHROPIC_BASE_URL
+```
+
+**Windows:**
+```powershell
+echo $env:ANTHROPIC_API_KEY; echo $env:ANTHROPIC_BASE_URL
+```
+
+값이 출력되면 설정 완료! → 아래 **설치** 단계로 진행
+
+값이 비어있다면 → [Chapter 5: API 키 설정](05-api-key-setup.md)으로 이동
+
+---
+
 ## 설치
 
 ### Windows
@@ -68,11 +94,17 @@ cd $env:USERPROFILE\Documents
 cd ~/Documents
 ```
 
-2. Claude Code 실행:
+2. Claude Code 실행 (모델 지정):
 
 ```bash
-claude
+# 발급받은 Virtual Key에서 선택한 모델명을 입력
+claude --model claude-opus-4.5
 ```
+
+> **사용 가능한 모델:**
+> - `claude-opus-4.5` - 최고 성능, 복잡한 작업에 적합
+> - `claude-sonnet-4.5` - 균형 잡힌 성능과 속도
+> - `claude-haiku-4.5` - 빠른 응답, 간단한 작업에 적합
 
 3. 첫 실행 화면:
 
@@ -98,6 +130,7 @@ claude
 
 | 명령어 | 설명 | 예시 |
 |--------|------|------|
+| `claude --model 모델명` | 모델 지정하여 시작 | `claude --model claude-opus-4.5` |
 | `claude` | Claude Code 시작 | 터미널에서 `claude` 입력 |
 | `claude "질문"` | 바로 질문하기 | `claude "hello world 출력하는 파이썬 코드"` |
 | `/help` | 도움말 보기 | Claude Code 실행 중 `/help` 입력 |
