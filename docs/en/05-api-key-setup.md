@@ -8,26 +8,67 @@ LiteLLM is a proxy service that allows you to use multiple AI models (Claude, GP
 
 ---
 
-## Step 1: Get Your API Key
+## Step 1: Get Your API Key from LiteLLM
+
+### 1-1. Access LiteLLM Dashboard
+
+Open your web browser and go to:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  📋 API Key Issuance Process                                │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  1️⃣  Request LiteLLM API key from Kevin                     │
-│      - Via email, Slack, or internal system                 │
-│                                                             │
-│  2️⃣  Receive API key and server address                     │
-│      - API key example: sk-xxxxxxxxxxxxxxxxxxxxxxxx         │
-│      - Server address: https://api.ai.tokamak.network/          │
-│                                                             │
-│  3️⃣  Temporarily store API key in a safe place              │
-│      - Copy to notepad                                      │
-│      - Delete note after setup is complete                  │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+https://api.ai.tokamak.network/
 ```
+
+> **Note**: If you don't have an account, contact Kevin to request account creation.
+
+### 1-2. Create Virtual Key
+
+1. Click **Virtual Keys** in the left menu.
+
+2. Click the **+ Create New Key** button.
+
+![LiteLLM Virtual Keys Screen](../../images/capture%201.png)
+
+### 1-3. Enter Key Information
+
+**Key Ownership** section:
+- **Owned By**: Select `You` (default)
+- **Team**: Select your team if applicable, otherwise leave empty
+
+**Key Details** section:
+1. **Key Name** (required): Enter a key name
+   - Example: `my-claude-key`, `research-team-key`
+   - Use a name that's easy to identify later
+
+2. **Models** (required): Select models to use
+   - `claude-opus-4.5` - Highest performance, complex tasks
+   - `claude-sonnet-4.5` - Balanced performance
+   - `claude-haiku-4.5` - Fast response, simple tasks
+
+   > **Tip**: You can select multiple models. We recommend selecting all three models.
+
+3. **Key Type**: `Default` (keep default)
+
+![Key Creation Screen](../../images/capture%202.png)
+
+### 1-4. Complete Key Creation
+
+1. Click the **Create Key** button.
+
+2. The generated API key will be displayed:
+   ```
+   sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
+
+3. ⚠️ **Important**: This key is shown **only once**!
+   - Make sure to copy it to a safe place
+   - Save temporarily in notepad, delete after setup is complete
+
+### Server Information
+
+| Item | Value |
+|------|-------|
+| **API Key** | `sk-xxxxx...` (the key you just created) |
+| **Server Address** | `https://api.ai.tokamak.network/` |
 
 ---
 
