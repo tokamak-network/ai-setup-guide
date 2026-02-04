@@ -76,13 +76,13 @@ npm config get prefix
 
 ```powershell
 # Windows
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 echo $env:ANTHROPIC_BASE_URL
 ```
 
 ```bash
 # Mac
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 echo $ANTHROPIC_BASE_URL
 ```
 
@@ -188,7 +188,7 @@ echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 
 ```powershell
 # IDE 내장 터미널에서 실행
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 # 결과: 아무것도 출력 안 됨
 ```
 
@@ -218,7 +218,7 @@ IDE의 내장 터미널은 **IDE가 시작될 때의 환경 변수**를 사용�
 
 ```powershell
 # 저장된 값 직접 확인 (현재 세션과 무관)
-[System.Environment]::GetEnvironmentVariable('ANTHROPIC_API_KEY', 'User')
+[System.Environment]::GetEnvironmentVariable('ANTHROPIC_AUTH_TOKEN', 'User')
 ```
 
 - 값이 나오면 → 저장은 정상, IDE만 재시작하면 됨
@@ -231,7 +231,7 @@ IDE의 내장 터미널은 **IDE가 시작될 때의 환경 변수**를 사용�
 3. **IDE 다시 실행**
 4. 내장 터미널에서 확인:
    ```powershell
-   echo $env:ANTHROPIC_API_KEY
+   echo $env:ANTHROPIC_AUTH_TOKEN
    ```
 
 ### 3단계: 그래도 안 되면 - GUI로 직접 설정
@@ -242,7 +242,7 @@ IDE의 내장 터미널은 **IDE가 시작될 때의 환경 변수**를 사용�
 
 | 변수 이름 | 변수 값 |
 |----------|---------|
-| `ANTHROPIC_API_KEY` | `sk-발급받은키` |
+| `ANTHROPIC_AUTH_TOKEN` | `sk-발급받은키` |
 | `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` |
@@ -255,7 +255,7 @@ IDE의 내장 터미널은 **IDE가 시작될 때의 환경 변수**를 사용�
 
 1. **외부 터미널** (IDE가 아닌 Terminal 앱)에서 확인:
    ```bash
-   echo $ANTHROPIC_API_KEY
+   echo $ANTHROPIC_AUTH_TOKEN
    ```
 
 2. 값이 나오면 IDE만 재시작

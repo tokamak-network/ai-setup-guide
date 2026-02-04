@@ -20,12 +20,12 @@ Verify your setup is complete with these commands:
 
 **Mac:**
 ```bash
-echo $ANTHROPIC_API_KEY && echo $ANTHROPIC_BASE_URL
+echo $ANTHROPIC_AUTH_TOKEN && echo $ANTHROPIC_BASE_URL
 ```
 
 **Windows:**
 ```powershell
-echo $env:ANTHROPIC_API_KEY; echo $env:ANTHROPIC_BASE_URL
+echo $env:ANTHROPIC_AUTH_TOKEN; echo $env:ANTHROPIC_BASE_URL
 ```
 
 If values are displayed, setup is complete! → Proceed to **Installation** below

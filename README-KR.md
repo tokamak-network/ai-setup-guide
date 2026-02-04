@@ -4,7 +4,7 @@
 
 🌐 [English Version](README.md)
 
-**문서 버전**: 1.10.0
+**문서 버전**: 1.11.0
 **최종 수정일**: 2025년 2월 2일
 **호환 버전**: Node.js 20.x LTS, Claude Code 1.x, OpenCode 0.x
 
@@ -94,6 +94,7 @@
 | 1.8.0 | 2025-02-02 | API URL 업데이트 (api.ai.tokamak.network), --model 플래그 사용법 추가, API 설정 흐름 재정리 |
 | 1.9.0 | 2025-02-02 | LiteLLM Virtual Key 생성 가이드 및 스크린샷 추가 |
 | 1.10.0 | 2025-02-02 | IDE 내장 터미널 환경 변수 인식 문제 해결 가이드 추가 |
+| 1.11.0 | 2025-02-02 | ANTHROPIC_API_KEY를 ANTHROPIC_AUTH_TOKEN으로 변경, Mac 인라인 실행 방법 추가 |
 
 ---
 

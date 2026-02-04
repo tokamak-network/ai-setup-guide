@@ -76,13 +76,13 @@ npm config get prefix
 
 ```powershell
 # Windows
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 echo $env:ANTHROPIC_BASE_URL
 ```
 
 ```bash
 # Mac
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 echo $ANTHROPIC_BASE_URL
 ```
 
@@ -188,7 +188,7 @@ echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 
 ```powershell
 # Running in IDE integrated terminal
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 # Result: Nothing displayed
 ```
 
@@ -218,7 +218,7 @@ In **external PowerShell** (launched from Start menu, not from IDE):
 
 ```powershell
 # Check saved value directly (independent of current session)
-[System.Environment]::GetEnvironmentVariable('ANTHROPIC_API_KEY', 'User')
+[System.Environment]::GetEnvironmentVariable('ANTHROPIC_AUTH_TOKEN', 'User')
 ```
 
 - If value appears → Saved correctly, just restart IDE
@@ -231,7 +231,7 @@ In **external PowerShell** (launched from Start menu, not from IDE):
 3. **Restart the IDE**
 4. Check in integrated terminal:
    ```powershell
-   echo $env:ANTHROPIC_API_KEY
+   echo $env:ANTHROPIC_AUTH_TOKEN
    ```
 
 ### Step 3: If still not working - Set directly via GUI
@@ -242,7 +242,7 @@ In **external PowerShell** (launched from Start menu, not from IDE):
 
 | Variable Name | Variable Value |
 |--------------|----------------|
-| `ANTHROPIC_API_KEY` | `sk-your-key` |
+| `ANTHROPIC_AUTH_TOKEN` | `sk-your-key` |
 | `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` |
@@ -255,7 +255,7 @@ In **external PowerShell** (launched from Start menu, not from IDE):
 
 1. Check in **external terminal** (Terminal app, not IDE):
    ```bash
-   echo $ANTHROPIC_API_KEY
+   echo $ANTHROPIC_AUTH_TOKEN
    ```
 
 2. If value appears → Just restart IDE

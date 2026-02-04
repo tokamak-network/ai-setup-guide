@@ -118,15 +118,15 @@ API 키를 컴퓨터에 안전하게 저장합니다. **운영체제별로 방�
 
 5. 첫 번째 변수 입력:
    ```
-   변수 이름: ANTHROPIC_API_KEY
-   변수 값: (IT팀에서 받은 API 키 붙여넣기)
+   변수 이름: ANTHROPIC_AUTH_TOKEN
+   변수 값: sk-YOUR_API_KEY (발급받은 API 키)
    ```
    → **확인** 클릭
 
 6. 다시 **새로 만들기** 클릭, 두 번째 변수 입력:
    ```
    변수 이름: ANTHROPIC_BASE_URL
-   변수 값: (IT팀에서 받은 서버 주소 붙여넣기)
+   변수 값: https://api.ai.tokamak.network/
    ```
    → **확인** 클릭
 
@@ -137,17 +137,17 @@ API 키를 컴퓨터에 안전하게 저장합니다. **운영체제별로 방�
 
 **방법 2: PowerShell 명령어로 설정**
 
-PowerShell을 열고 아래 명령어 실행 (**API 키와 URL 부분을 수정**하세요):
+PowerShell을 열고 아래 명령어 실행 (**YOUR_API_KEY 부분을 발급받은 키로 수정**하세요):
 
 ```powershell
-[System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-여기에API키입력', 'User')
+[System.Environment]::SetEnvironmentVariable('ANTHROPIC_AUTH_TOKEN', 'sk-YOUR_API_KEY', 'User')
 [System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.ai.tokamak.network/', 'User')
 ```
 
 **✅ 설정 확인** (새 PowerShell 창에서):
 
 ```powershell
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 ```
 
 API 키 값이 출력되면 **성공!**
@@ -156,14 +156,14 @@ API 키 값이 출력되면 **성공!**
 
 ### Mac
 
-**영구 설정 방법** (터미널을 닫아도 유지됨)
+**방법 1: 영구 설정** (터미널을 닫아도 유지됨) ⭐ 추천
 
 1. 터미널 열기
 
-2. 아래 명령어 **한 줄씩** 실행 (**API 키와 URL 부분을 수정**하세요):
+2. 아래 명령어 **한 줄씩** 실행 (**YOUR_API_KEY 부분을 발급받은 키로 수정**하세요):
 
 ```bash
-echo 'export ANTHROPIC_API_KEY="sk-여기에API키입력"' >> ~/.zshrc
+echo 'export ANTHROPIC_AUTH_TOKEN="sk-YOUR_API_KEY"' >> ~/.zshrc
 echo 'export ANTHROPIC_BASE_URL="https://api.ai.tokamak.network/"' >> ~/.zshrc
 ```
 
@@ -176,13 +176,31 @@ source ~/.zshrc
 4. **✅ 설정 확인**:
 
 ```bash
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 ```
 
 API 키 값이 출력되면 **성공!**
 
-
 > **참고**: `~/.zshrc` 파일은 터미널이 시작될 때마다 자동으로 읽히는 설정 파일입니다.
+
+**방법 2: 인라인 실행** (환경 변수가 인식되지 않을 때)
+
+환경 변수를 설정했는데도 Claude Code 실행 시 로그인 화면이 나타나면, 인라인 방식으로 실행하세요:
+
+```bash
+ANTHROPIC_AUTH_TOKEN=sk-YOUR_API_KEY ANTHROPIC_BASE_URL=https://api.ai.tokamak.network/ claude
+```
+
+**편리한 alias 설정** (선택사항):
+
+```bash
+# ~/.zshrc에 alias 추가
+echo 'alias claude-run="ANTHROPIC_AUTH_TOKEN=$ANTHROPIC_AUTH_TOKEN ANTHROPIC_BASE_URL=$ANTHROPIC_BASE_URL claude"' >> ~/.zshrc
+source ~/.zshrc
+
+# 이후 간단하게 실행
+claude-run --model claude-opus-4.5
+```
 
 ---
 
@@ -217,7 +235,7 @@ source ~/.zshrc
 
 | 환경 변수 | 값 | 용도 |
 |----------|---|------|
-| `ANTHROPIC_API_KEY` | `sk-xxxxx` (발급받은 키) | API 인증 |
+| `ANTHROPIC_AUTH_TOKEN` | `sk-YOUR_API_KEY` (발급받은 키) | API 인증 |
 | `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` | 프록시 서버 주소 |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` | 메인 작업용 모델 |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` | 백그라운드 작업용 모델 |
@@ -227,14 +245,14 @@ source ~/.zshrc
 
 ```bash
 # Mac
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 echo $ANTHROPIC_BASE_URL
 echo $ANTHROPIC_DEFAULT_HAIKU_MODEL
 ```
 
 ```powershell
 # Windows
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 echo $env:ANTHROPIC_BASE_URL
 echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 ```

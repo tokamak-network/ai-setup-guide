@@ -114,15 +114,15 @@ Store the API key securely on your computer. **Methods differ by operating syste
 
 5. Enter the first variable:
    ```
-   Variable name: ANTHROPIC_API_KEY
-   Variable value: (paste the API key from IT team)
+   Variable name: ANTHROPIC_AUTH_TOKEN
+   Variable value: sk-YOUR_API_KEY (your issued API key)
    ```
    → Click **OK**
 
 6. Click **New** again, enter the second variable:
    ```
    Variable name: ANTHROPIC_BASE_URL
-   Variable value: (paste the server address from IT team)
+   Variable value: https://api.ai.tokamak.network/
    ```
    → Click **OK**
 
@@ -132,17 +132,17 @@ Store the API key securely on your computer. **Methods differ by operating syste
 
 **Method 2: Set via PowerShell Commands**
 
-Open PowerShell and run the following commands (**modify the API key and URL**):
+Open PowerShell and run the following commands (**replace YOUR_API_KEY with your actual key**):
 
 ```powershell
-[System.Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', 'sk-enter-your-api-key-here', 'User')
+[System.Environment]::SetEnvironmentVariable('ANTHROPIC_AUTH_TOKEN', 'sk-YOUR_API_KEY', 'User')
 [System.Environment]::SetEnvironmentVariable('ANTHROPIC_BASE_URL', 'https://api.ai.tokamak.network/', 'User')
 ```
 
 **✅ Verify Setup** (in a new PowerShell window):
 
 ```powershell
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 ```
 
 If the API key value is displayed, **success!**
@@ -151,14 +151,14 @@ If the API key value is displayed, **success!**
 
 ### Mac
 
-**Permanent Setup Method** (persists after closing terminal)
+**Method 1: Permanent Setup** (persists after closing terminal) ⭐ Recommended
 
 1. Open Terminal
 
-2. Run the following commands **one line at a time** (**modify the API key and URL**):
+2. Run the following commands **one line at a time** (**replace YOUR_API_KEY with your actual key**):
 
 ```bash
-echo 'export ANTHROPIC_API_KEY="sk-enter-your-api-key-here"' >> ~/.zshrc
+echo 'export ANTHROPIC_AUTH_TOKEN="sk-YOUR_API_KEY"' >> ~/.zshrc
 echo 'export ANTHROPIC_BASE_URL="https://api.ai.tokamak.network/"' >> ~/.zshrc
 ```
 
@@ -171,12 +171,31 @@ source ~/.zshrc
 4. **✅ Verify Setup**:
 
 ```bash
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 ```
 
 If the API key value is displayed, **success!**
 
 > **Note**: The `~/.zshrc` file is a configuration file that is automatically read every time the terminal starts.
+
+**Method 2: Inline Execution** (when environment variables aren't recognized)
+
+If a login screen appears when running Claude Code even after setting environment variables, use inline execution:
+
+```bash
+ANTHROPIC_AUTH_TOKEN=sk-YOUR_API_KEY ANTHROPIC_BASE_URL=https://api.ai.tokamak.network/ claude
+```
+
+**Convenient alias setup** (optional):
+
+```bash
+# Add alias to ~/.zshrc
+echo 'alias claude-run="ANTHROPIC_AUTH_TOKEN=$ANTHROPIC_AUTH_TOKEN ANTHROPIC_BASE_URL=$ANTHROPIC_BASE_URL claude"' >> ~/.zshrc
+source ~/.zshrc
+
+# Then simply run
+claude-run --model claude-opus-4.5
+```
 
 ---
 
@@ -211,7 +230,7 @@ source ~/.zshrc
 
 | Environment Variable | Value | Purpose |
 |---------------------|-------|---------|
-| `ANTHROPIC_API_KEY` | `sk-xxxxx` (your issued key) | API authentication |
+| `ANTHROPIC_AUTH_TOKEN` | `sk-YOUR_API_KEY` (your issued key) | API authentication |
 | `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` | Proxy server address |
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` | Model for main tasks |
 | `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` | Model for background tasks |
@@ -221,14 +240,14 @@ source ~/.zshrc
 
 ```bash
 # Mac
-echo $ANTHROPIC_API_KEY
+echo $ANTHROPIC_AUTH_TOKEN
 echo $ANTHROPIC_BASE_URL
 echo $ANTHROPIC_DEFAULT_HAIKU_MODEL
 ```
 
 ```powershell
 # Windows
-echo $env:ANTHROPIC_API_KEY
+echo $env:ANTHROPIC_AUTH_TOKEN
 echo $env:ANTHROPIC_BASE_URL
 echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 ```

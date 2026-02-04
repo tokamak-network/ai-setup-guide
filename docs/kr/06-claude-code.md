@@ -20,12 +20,12 @@ Claude Code를 실행하기 전에 **반드시** API 키 설정을 완료해야 
 
 **Mac:**
 ```bash
-echo $ANTHROPIC_API_KEY && echo $ANTHROPIC_BASE_URL
+echo $ANTHROPIC_AUTH_TOKEN && echo $ANTHROPIC_BASE_URL
 ```
 
 **Windows:**
 ```powershell
-echo $env:ANTHROPIC_API_KEY; echo $env:ANTHROPIC_BASE_URL
+echo $env:ANTHROPIC_AUTH_TOKEN; echo $env:ANTHROPIC_BASE_URL
 ```
 
 값이 출력되면 설정 완료! → 아래 **설치** 단계로 진행
