@@ -4,7 +4,7 @@
 
 🌐 [English Version](README.md)
 
-**문서 버전**: 1.9.0
+**문서 버전**: 1.10.0
 **최종 수정일**: 2025년 2월 2일
 **호환 버전**: Node.js 20.x LTS, Claude Code 1.x, OpenCode 0.x
 
@@ -93,6 +93,7 @@
 | 1.7.0 | 2025-02-02 | 연구자/HR팀을 위한 Skills & Agents 가이드 강화 (엑셀, 워드, PDF, 데이터 분석) |
 | 1.8.0 | 2025-02-02 | API URL 업데이트 (api.ai.tokamak.network), --model 플래그 사용법 추가, API 설정 흐름 재정리 |
 | 1.9.0 | 2025-02-02 | LiteLLM Virtual Key 생성 가이드 및 스크린샷 추가 |
+| 1.10.0 | 2025-02-02 | IDE 내장 터미널 환경 변수 인식 문제 해결 가이드 추가 |
 
 ---
 

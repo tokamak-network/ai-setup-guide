@@ -182,6 +182,96 @@ echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 
 ---
 
+## IDE Integrated Terminal Not Recognizing Environment Variables ⚠️ Important
+
+**Symptom**: Environment variables are set but not recognized in the integrated terminal of Antigravity, VS Code, Cursor, or other IDEs
+
+```powershell
+# Running in IDE integrated terminal
+echo $env:ANTHROPIC_API_KEY
+# Result: Nothing displayed
+```
+
+**Cause**:
+
+IDE integrated terminals use the **environment variables from when the IDE was started**. You must start the IDE **after** setting the environment variables for them to be recognized.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  🔍 Problem Sequence                                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  1. Start IDE (without environment variables)               │
+│  2. Set environment variables                               │
+│  3. Check in IDE terminal → Not recognized! ❌              │
+│                                                             │
+│  IDE only remembers environment from startup time           │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Solution**:
+
+### Step 1: Verify environment variables are actually saved
+
+In **external PowerShell** (launched from Start menu, not from IDE):
+
+```powershell
+# Check saved value directly (independent of current session)
+[System.Environment]::GetEnvironmentVariable('ANTHROPIC_API_KEY', 'User')
+```
+
+- If value appears → Saved correctly, just restart IDE
+- If no value → Environment variable setup failed, need to set again
+
+### Step 2: Completely restart the IDE
+
+1. **Completely close the IDE** (click X button)
+2. If icon remains in taskbar → Right-click → **Close**
+3. **Restart the IDE**
+4. Check in integrated terminal:
+   ```powershell
+   echo $env:ANTHROPIC_API_KEY
+   ```
+
+### Step 3: If still not working - Set directly via GUI
+
+1. `Windows + R` → Type `sysdm.cpl` → Enter
+2. **Advanced** tab → Click **Environment Variables**
+3. Check/add in **User variables** section:
+
+| Variable Name | Variable Value |
+|--------------|----------------|
+| `ANTHROPIC_API_KEY` | `sk-your-key` |
+| `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` |
+| `CLAUDE_CODE_SUBAGENT_MODEL` | `claude-opus-4.5` |
+
+4. Click **OK** on all windows
+5. **Completely close IDE and restart**
+
+### Same issue on Mac
+
+1. Check in **external terminal** (Terminal app, not IDE):
+   ```bash
+   echo $ANTHROPIC_API_KEY
+   ```
+
+2. If value appears → Just restart IDE
+3. If no value → Redo setup:
+   ```bash
+   nano ~/.zshrc
+   ```
+   Add environment variables at the bottom of file and save
+
+**Key Summary**:
+```
+Set environment variables → Close IDE → Restart IDE → Recognized ✅
+```
+
+---
+
 ## "Permission denied" Error
 
 **Symptom**: File/folder access permission error

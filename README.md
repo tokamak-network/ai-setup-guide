@@ -2,7 +2,7 @@
 
 > A guide for setting up AI-based development environments for non-developers (researchers, HR teams, etc.)
 
-**Document Version**: 1.9.0
+**Document Version**: 1.10.0
 **Last Updated**: February 2, 2025
 **Compatible Versions**: Node.js 20.x LTS, Claude Code 1.x, OpenCode 0.x
 
@@ -93,6 +93,7 @@ Follow these steps in order if you're just getting started:
 | 1.7.0 | 2025-02-02 | Enhanced Skills & Agents guide for researchers/HR (Excel, Word, PDF, data analysis) |
 | 1.8.0 | 2025-02-02 | Updated API URL (api.ai.tokamak.network), added --model flag usage, reorganized API setup flow |
 | 1.9.0 | 2025-02-02 | Added LiteLLM Virtual Key creation guide with screenshots |
+| 1.10.0 | 2025-02-02 | Added troubleshooting for IDE integrated terminal environment variable issues |
 
 ---
 

@@ -182,6 +182,96 @@ echo $env:ANTHROPIC_DEFAULT_HAIKU_MODEL
 
 ---
 
+## IDE 내장 터미널에서 환경 변수 인식 안 됨 ⚠️ 중요
+
+**증상**: 환경 변수를 설정했는데 Antigravity, VS Code, Cursor 등 IDE의 내장 터미널에서 인식되지 않음
+
+```powershell
+# IDE 내장 터미널에서 실행
+echo $env:ANTHROPIC_API_KEY
+# 결과: 아무것도 출력 안 됨
+```
+
+**원인**:
+
+IDE의 내장 터미널은 **IDE가 시작될 때의 환경 변수**를 사용합니다. 환경 변수를 설정한 **후에** IDE를 시작해야 인식됩니다.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  🔍 문제 발생 순서                                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  1. IDE 실행 (환경 변수 없는 상태)                            │
+│  2. 환경 변수 설정                                           │
+│  3. IDE 내장 터미널에서 확인 → 인식 안 됨! ❌                  │
+│                                                             │
+│  IDE는 시작 시점의 환경만 기억하기 때문                        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**해결 방법**:
+
+### 1단계: 환경 변수가 실제로 저장됐는지 확인
+
+**외부 PowerShell** (IDE가 아닌 시작 메뉴에서 직접 실행)에서:
+
+```powershell
+# 저장된 값 직접 확인 (현재 세션과 무관)
+[System.Environment]::GetEnvironmentVariable('ANTHROPIC_API_KEY', 'User')
+```
+
+- 값이 나오면 → 저장은 정상, IDE만 재시작하면 됨
+- 값이 안 나오면 → 환경 변수 설정 자체가 안 된 것, 다시 설정 필요
+
+### 2단계: IDE 완전히 재시작
+
+1. **IDE 완전히 종료** (X 버튼 클릭)
+2. 작업 표시줄에 아이콘이 남아있다면 → 우클릭 → **닫기**
+3. **IDE 다시 실행**
+4. 내장 터미널에서 확인:
+   ```powershell
+   echo $env:ANTHROPIC_API_KEY
+   ```
+
+### 3단계: 그래도 안 되면 - GUI로 직접 설정
+
+1. `Windows + R` → `sysdm.cpl` 입력 → Enter
+2. **고급** 탭 → **환경 변수** 클릭
+3. **사용자 변수** 섹션에서 직접 확인/추가:
+
+| 변수 이름 | 변수 값 |
+|----------|---------|
+| `ANTHROPIC_API_KEY` | `sk-발급받은키` |
+| `ANTHROPIC_BASE_URL` | `https://api.ai.tokamak.network/` |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL` | `claude-opus-4.5` |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL` | `claude-haiku-4.5` |
+| `CLAUDE_CODE_SUBAGENT_MODEL` | `claude-opus-4.5` |
+
+4. 모든 창에서 **확인** 클릭
+5. **IDE 완전히 종료 후 다시 시작**
+
+### Mac에서 동일 문제 발생 시
+
+1. **외부 터미널** (IDE가 아닌 Terminal 앱)에서 확인:
+   ```bash
+   echo $ANTHROPIC_API_KEY
+   ```
+
+2. 값이 나오면 IDE만 재시작
+3. 값이 안 나오면 설정 다시 수행:
+   ```bash
+   nano ~/.zshrc
+   ```
+   파일 맨 아래에 환경 변수 추가 후 저장
+
+**핵심 요약**:
+```
+환경 변수 설정 → IDE 종료 → IDE 다시 시작 → 인식됨 ✅
+```
+
+---
+
 ## "Permission denied" 오류
 
 **증상**: 파일/폴더 접근 권한 오류
