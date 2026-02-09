@@ -13,13 +13,14 @@ This guide covers the **Tokamak custom build** which supports automatic context 
 
 ### Platform Binaries
 
-Download the binary for your platform from the GitHub release.
+Download the binary for your platform from the [OpenCode GitHub Releases](https://github.com/anomalyco/opencode/releases/latest).
 
-| Platform | Binary |
-|----------|--------|
-| Mac M1/M2/M3/M4 | `opencode-darwin-arm64` |
-| Mac Intel | `opencode-darwin-x64` |
-| Linux x64 | `opencode-linux-x64` |
+| Platform | Download |
+|----------|----------|
+| Mac M1/M2/M3/M4 | [opencode-darwin-arm64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-darwin-arm64.zip) |
+| Mac Intel | [opencode-darwin-x64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-darwin-x64.zip) |
+| Linux x64 | [opencode-linux-x64.tar.gz](https://github.com/anomalyco/opencode/releases/latest/download/opencode-linux-x64.tar.gz) |
+| Windows x64 | [opencode-windows-x64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-windows-x64.zip) |
 
 ### Mac
 
@@ -29,8 +30,8 @@ Download the binary for your platform from the GitHub release.
 # Create installation directory
 mkdir -p ~/.opencode/bin
 
-# Copy downloaded binary (Mac Apple Silicon example)
-cp ~/Downloads/opencode-darwin-arm64 ~/.opencode/bin/opencode
+# Extract downloaded zip (Mac Apple Silicon example)
+unzip ~/Downloads/opencode-darwin-arm64.zip -d ~/.opencode/bin/
 
 # Grant execute permission
 chmod +x ~/.opencode/bin/opencode

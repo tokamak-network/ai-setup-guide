@@ -13,13 +13,14 @@ OpenCode는 다양한 AI 모델을 지원하는 오픈소스 AI 코딩 도구입
 
 ### 플랫폼별 바이너리 다운로드
 
-GitHub 릴리즈에서 본인 플랫폼에 맞는 바이너리를 다운로드합니다.
+[OpenCode GitHub 릴리즈](https://github.com/anomalyco/opencode/releases/latest)에서 본인 플랫폼에 맞는 바이너리를 다운로드합니다.
 
-| 플랫폼 | 바이너리 |
+| 플랫폼 | 다운로드 |
 |--------|---------|
-| Mac M1/M2/M3/M4 | `opencode-darwin-arm64` |
-| Mac Intel | `opencode-darwin-x64` |
-| Linux x64 | `opencode-linux-x64` |
+| Mac M1/M2/M3/M4 | [opencode-darwin-arm64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-darwin-arm64.zip) |
+| Mac Intel | [opencode-darwin-x64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-darwin-x64.zip) |
+| Linux x64 | [opencode-linux-x64.tar.gz](https://github.com/anomalyco/opencode/releases/latest/download/opencode-linux-x64.tar.gz) |
+| Windows x64 | [opencode-windows-x64.zip](https://github.com/anomalyco/opencode/releases/latest/download/opencode-windows-x64.zip) |
 
 ### Mac
 
@@ -29,8 +30,8 @@ GitHub 릴리즈에서 본인 플랫폼에 맞는 바이너리를 다운로드�
 # 설치 디렉토리 생성
 mkdir -p ~/.opencode/bin
 
-# 다운로드한 바이너리를 복사 (Mac Apple Silicon 기준)
-cp ~/Downloads/opencode-darwin-arm64 ~/.opencode/bin/opencode
+# 다운로드한 zip 압축 해제 (Mac Apple Silicon 기준)
+unzip ~/Downloads/opencode-darwin-arm64.zip -d ~/.opencode/bin/
 
 # 실행 권한 부여
 chmod +x ~/.opencode/bin/opencode
