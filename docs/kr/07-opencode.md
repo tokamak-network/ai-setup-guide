@@ -24,6 +24,11 @@ OpenCode는 다양한 AI 모델을 지원하는 오픈소스 AI 코딩 도구입
 
 ### Mac
 
+> **참고**: 이전에 `brew install opencode-ai/tap/opencode`로 설치한 적이 있다면, 먼저 제거해주세요:
+> ```bash
+> brew uninstall opencode
+> ```
+
 **Step 1: 바이너리 설치**
 
 ```bash

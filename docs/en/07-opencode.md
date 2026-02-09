@@ -24,6 +24,11 @@ Download the binary for your platform from the [OpenCode GitHub Releases](https:
 
 ### Mac
 
+> **Note**: If you previously installed OpenCode via `brew install opencode-ai/tap/opencode`, remove it first:
+> ```bash
+> brew uninstall opencode
+> ```
+
 **Step 1: Install Binary**
 
 ```bash
