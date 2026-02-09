@@ -5,35 +5,65 @@
 ---
 
 OpenCode is an open-source AI coding tool that supports various AI models.
+This guide covers the **Tokamak custom build** which supports automatic context compaction, custom providers, and more.
 
 ---
 
 ## Installation
 
+### Platform Binaries
+
+Download the binary for your platform from the GitHub release.
+
+| Platform | Binary |
+|----------|--------|
+| Mac M1/M2/M3/M4 | `opencode-darwin-arm64` |
+| Mac Intel | `opencode-darwin-x64` |
+| Linux x64 | `opencode-linux-x64` |
+
+### Mac
+
+**Step 1: Install Binary**
+
+```bash
+# Create installation directory
+mkdir -p ~/.opencode/bin
+
+# Copy downloaded binary (Mac Apple Silicon example)
+cp ~/Downloads/opencode-darwin-arm64 ~/.opencode/bin/opencode
+
+# Grant execute permission
+chmod +x ~/.opencode/bin/opencode
+```
+
+**Step 2: Add to PATH**
+
+```bash
+echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ### Windows
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  ⚠️ Notice for Windows Users                                │
+│  Notice for Windows Users                                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  OpenCode currently does not provide Windows native         │
-│  binaries. Windows users should choose from below:          │
+│  Windows users should choose from below:                     │
 │                                                             │
-│  ✅ Recommended: Use Claude Code (full Windows support)     │
-│  🔧 Alternative: Install OpenCode via WSL (Linux env)       │
+│  Method 1: Use Claude Code (Recommended)                     │
+│  Method 2: Install OpenCode via WSL (Linux env)              │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Method 1: Use Claude Code (Recommended)** ⭐
+**Method 1: Use Claude Code (Recommended)**
 
 Windows users are **strongly recommended** to use **Claude Code**.
 → Go to [Claude Code Installation Guide](06-claude-code.md)
 
-**Method 2: Install via WSL (Windows Subsystem for Linux)**
-
-You can use OpenCode in a Linux environment through WSL.
+**Method 2: Install via WSL**
 
 1. **Install WSL** (PowerShell with admin rights):
 ```powershell
@@ -44,53 +74,67 @@ wsl --install
 
 3. Open **Ubuntu Terminal** (search "Ubuntu" in Start menu)
 
-4. Follow the Mac installation method below in Ubuntu
-
-> **Note**: If you're not familiar with WSL, using only Claude Code is sufficient!
-
----
-
-### Mac
-
-**Method 1: Using Homebrew** ⭐ Recommended
-
-```bash
-brew install opencode-ai/tap/opencode
-```
-
-**Method 2: Install via Go**
-
-```bash
-brew install go
-go install github.com/opencode-ai/opencode@latest
-```
+4. Download the `opencode-linux-x64` binary and follow the Mac installation steps above
+   (use `~/.bashrc` instead of `~/.zshrc`)
 
 ---
 
-## LiteLLM Integration Setup
+## Configuration
 
-Create a configuration file for OpenCode to work through LiteLLM.
-
-### Mac / WSL (Linux)
-
-1. Run the following command in Terminal:
+### Create Configuration File
 
 ```bash
-nano ~/.opencode.json
+mkdir -p ~/.config/opencode
+nano ~/.config/opencode/opencode.json
 ```
 
-2. Enter the following content (**modify API key and URL**):
+Enter the following content (**modify API key**):
 
 ```json
 {
-  "provider": "openai-compatible",
-  "apiKey": "sk-enter-your-api-key-here",
-  "baseUrl": "https://api.tokamak.network",
-  "model": "claude-4-5-opus"
+  "$schema": "https://opencode.ai/config.json",
+  "model": "tokamak/gpt-5.2-pro",
+  "permission": {
+    "external_directory": "allow"
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "provider": {
+    "tokamak": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Tokamak AI",
+      "options": {
+        "baseURL": "https://api.ai.tokamak.network",
+        "apiKey": "sk-enter-your-api-key-here"
+      },
+      "models": {
+        "gpt-5.2-pro": {
+          "name": "GPT 5.2 Pro",
+          "limit": {
+            "context": 131072,
+            "input": 131072,
+            "output": 16384
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
-3. Save with `Ctrl + X` → `Y` → `Enter`
+Save with `Ctrl + X` → `Y` → `Enter`
+
+### Key Configuration Options
+
+| Setting | Description |
+|---------|-------------|
+| `model` | Default model to use (`provider/model` format) |
+| `compaction.auto` | Automatically compresses conversation when nearing token limit |
+| `compaction.prune` | Cleans up unnecessary earlier messages |
+| `limit.input` | Must be set for proper token calculation |
+| `permission.external_directory` | Allows reading files outside the project directory |
 
 ---
 
@@ -109,7 +153,6 @@ If a version number appears, **success!**
 1. Navigate to your working folder in Terminal:
 
 ```bash
-# Mac / WSL
 cd ~/Documents
 ```
 
@@ -130,6 +173,7 @@ opencode
 | `opencode --version` | Check version |
 | `/help` | Help while running |
 | `/clear` | Clear conversation |
+| `/compact` | Manually compress conversation |
 | `Ctrl + C` | Stop execution |
 | `/quit` or `exit` | Exit |
 
